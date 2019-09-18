@@ -17,21 +17,21 @@ function runGame() {
 	let playerName = randomName[input];
 	console.log (playerName);
 
-	let continuePlaying = runFirstRound();
-	if(continuePlaying === true){
-		
-	}
+	// let continuePlaying = runChanceRound();
+	// // if(continuePlaying === true){
 
+	// // }
+}
 function runChanceRound(){
 	let input = prompt("Are you ready to roll? Please choose number 1-4 for chance to enter tournament. If your number matches the roll you are entered!");
 	let roll2 = randomWholeNum(4);
 	if (roll2 === input) {
 		alert("Congrats!!! You have entered the tournament for a chance to win $1,000,000!");
-		return true;
+		// return true;
 	}
 	else {
 		alert("Sorry, but you have not been chosen for the tournament.");
-		return false;
+		// return false;
 	}
 	console.log(roll2);
 }
@@ -47,7 +47,7 @@ function runFirstRound() {
 		alert("Congrats, you've advanced to round 2!");
 	}
 	else {
-		alert("Congrats, you've advanced to round 2!");
+		alert("I'm sorry but you've lost. Please leave the game.");
 	}
 	console.log(roll3);
 }
@@ -55,11 +55,15 @@ function runFirstRound() {
 function runSecondRound() {
 	input = prompt("Choose a number between 1-16 for the SECOND round of the tournament. If your number is not picked you move on to next round.");
 	let roll4 = randomWholeNum(16);
-	if (roll4 === input) {
-		alert("I'm sorry but you've lost. Please leave the game.");
+	//if a 13 is rolled, the user loses instantly even if they didn't choose 13
+	if (roll4 === 13) {
+		alert("MUHAHAHA you have rolled a 13! You LOSE!!! Please leave the game.");
+	}
+	else if (roll4 !== input) {
+		alert("Congrats, you've advanced to round 2!");
 	}
 	else {
-		alert("Congrats, you've advanced to round 3!");
+		alert("I'm sorry but you've lost. Please leave the game.");
 	}
 	console.log(roll4);
 }
@@ -119,3 +123,9 @@ function randomWholeNum(numberOfSides) {
 }
 
 runGame();
+runChanceRound();
+runFirstRound();
+runSecondRound();
+runThirdRound();
+runFourthRound();
+runFifthRound();
